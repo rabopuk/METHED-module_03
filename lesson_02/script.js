@@ -1,3 +1,58 @@
+const h1 = document.querySelector('h1');
+const h2 = document.querySelector('h2');
+const lessonDiv = document.querySelector('.lesson_02');
+
+const style = document.createElement('style');
+const input = document.createElement('input');
+const paragraph = document.createElement('p');
+
+paragraph.classList.add('rainbow-text');
+
+style.textContent = `
+  .rainbow-text {
+    background: linear-gradient(to right, violet, indigo,
+                blue, green, yellow, orange, red);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 36px;
+  }
+`;
+
+document.head.append(style);
+lessonDiv.append(input);
+lessonDiv.append(paragraph);
+
+document.body.style.backgroundColor = '#f0f0f0';
+
+h1.style.textAlign = 'center';
+h1.style.color = '#333';
+h1.style.fontSize = '48px';
+h1.style.fontFamily = 'Arial, sans-serif';
+
+h2.style.fontSize = '24px';
+h2.style.marginBottom = '100px';
+
+lessonDiv.style.display = 'flex';
+lessonDiv.style.flexDirection = 'column';
+lessonDiv.style.alignItems = 'center';
+lessonDiv.style.justifyContent = 'top';
+lessonDiv.style.height = '100vh';
+
+input.style.padding = '10px';
+input.style.fontSize = '16px';
+input.style.marginBottom = '20px';
+
+let timerId;
+
+input.addEventListener('input', () => {
+  clearTimeout(timerId);
+
+  timerId = setTimeout(() => {
+    paragraph.textContent = input.value;
+  }, 300);
+});
+
+
 // let counter = 0;
 
 // const intervalId = setInterval(() => {
